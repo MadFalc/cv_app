@@ -2,17 +2,22 @@
 
 namespace Database\Seeders;
 
-use Faker\Factory as Faker;
-use Faker\Provider\DateTime;
-use Faker\Provider\en_US\Address;
-use Faker\Provider\en_US\Person;
-use Faker\Provider\en_US\PhoneNumber;
-use Faker\Provider\Internet;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+
+// FAKER
+use Faker\Factory as Faker;
+use Faker\Provider\DateTime;
+use Faker\Provider\en_US\Address;
+// use Faker\Provider\en_US\Person;
+use Faker\Provider\en_US\PhoneNumber;
+use Faker\Provider\Internet;
+
+// FACTORY
+use App\Models\Person;
 
 
 class PersonSeeder extends Seeder
@@ -65,5 +70,8 @@ class PersonSeeder extends Seeder
             'nationality' => $faker->country,
             'linkedin_profile' => $faker->url
         ]);
+
+        // USE YOUR NEWLY CREATED FACTORY TO CREATE DUMMY DATA.
+        $persons = Person::factory()->count(10)->create();
     }
 }
