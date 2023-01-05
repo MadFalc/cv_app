@@ -35,7 +35,7 @@ class PersonController extends Controller
      */
     public function create()
     {
-        //
+        return view('persons.create');
     }
 
     /**
@@ -46,7 +46,21 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'date_of_birth' => 'required',
+            'nationality' => 'required',
+            'linkedin_profile' => 'required',
+        ]);
+
+        Person::create($request->all());
+
+        return redirect()->route('person.index')
+            ->with('success', 'Person created successfully.');
     }
 
     /**
@@ -55,9 +69,9 @@ class PersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Person $person)
     {
-        //
+        return view('persons.show', compact('person'));
     }
 
     /**
@@ -66,9 +80,9 @@ class PersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Person $person)
     {
-        //
+        return view('persons.edit', compact('person'));
     }
 
     /**
@@ -78,9 +92,23 @@ class PersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Person $person)
     {
-        //
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'date_of_birth' => 'required',
+            'nationality' => 'required',
+            'linkedin_profile' => 'required',
+        ]);
+      
+        $person->update($request->all());
+      
+        return redirect()->route('person.index')
+                        ->with('success','Person updated successfully');
     }
 
     /**
@@ -89,8 +117,11 @@ class PersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Person $person)
     {
-        //
+        $person->delete();
+       
+        return redirect()->route('person.index')
+                        ->with('success','Person deleted successfully');
     }
 }

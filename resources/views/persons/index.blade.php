@@ -2,6 +2,17 @@
 
 @section('body')
 
+<div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Leuke site joh. Dankje Florian '<3'</h2>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ route('person.create') }}"> Create New Product</a>
+            </div>
+        </div>
+    </div>
+
     <!-- IAM USING TAILWIND CSS TO STYLE THE TABLE. -->
     <table class="table-auto bg-blue-500 p-12">
         <thead>
@@ -27,14 +38,19 @@
                 <td class="truncate p-4">{{ $person->last_name }}</td>
                 <!-- USING THE DETAILS BUTTON WE WILL AN OVERVIEW OF ALL THE DATA. -->
                 <td class="truncate p-4">
-                    <button class="bg-blue-300 px-4 py-2 rounded shadow-md"> details </button>
+                    <a class="bg-blue-300 px-4 py-2 rounded shadow-md" href="{{ route('person.show',$person->id) }}"> details </a>
                 </td>
                 <td class="truncate p-4">
-                    <button class="bg-blue-300 px-4 py-2 rounded shadow-md"> edit </button>
+                    <a class="bg-blue-300 px-4 py-2 rounded shadow-md" href="{{ route('person.edit',$person->id) }}"> edit </a>
                 </td>
+
+                <form action="{{ route('person.destroy',$person->id) }}" method="POST">
                 <td class="truncate p-4">
-                    <button class="bg-blue-300 px-4 py-2 rounded shadow-md"> destroy </button>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-blue-300 px-4 py-2 rounded shadow-md"> destroy </button>
                 </td>
+                </form>
             </tr>
             @endforeach
         </tbody>

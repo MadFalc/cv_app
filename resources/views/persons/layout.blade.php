@@ -8,7 +8,7 @@
     </head>
 <body>
     <div class="w-screen flex justify-center items-center">
-        @yield('body')
+        @yield('content')
     </div>
 </body>
 </html>

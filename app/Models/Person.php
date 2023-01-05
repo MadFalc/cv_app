@@ -11,5 +11,5 @@ class Person extends Model
 
     protected $table = 'persons';
     protected $primaryKey = 'id';
-    protected $fillable = ['_token', 'first_name', 'last_name', 'photo', 'address', 'email', 'phone', 'date_of_birth', 'nationality', 'linkedin_profile'];
+    protected $fillable = ['first_name', 'last_name', 'photo', 'address', 'email', 'phone', 'date_of_birth', 'nationality', 'linkedin_profile'];
 }
