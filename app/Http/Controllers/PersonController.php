@@ -61,7 +61,7 @@ class PersonController extends Controller
 
         return redirect()->route('person.index')
             ->with('success', 'Person created successfully');
-    }
+        }
 
     /**
      * Display the specified resource.
