@@ -60,7 +60,7 @@ class PersonController extends Controller
         Person::create($request->all());
 
         return redirect()->route('person.index')
-            ->with('success', 'Person created successfully.');
+            ->with('success', 'Person created successfully');
     }
 
     /**

@@ -5,10 +5,16 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Leuke site joh. Dankje Florian '<3'</h2>
+                <h2>Leuke site joh. Dankje Florian
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }} Goed gedaan!
+    </div>
+@endif
+</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('person.create') }}"> Create New Person</a>
+                <a class="btn btn-success" href="{{ route('person.create') }}"> Create New Product</a>
             </div>
         </div>
     </div>
