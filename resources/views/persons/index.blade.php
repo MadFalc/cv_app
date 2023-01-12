@@ -8,7 +8,7 @@
                 <h2>Leuke site joh. Dankje Florian '<3'</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('person.create') }}"> Create New Product</a>
+                <a class="btn btn-success" href="{{ route('person.create') }}"> Create New Person</a>
             </div>
         </div>
     </div>
